@@ -43,6 +43,9 @@
                                 <a href="<?= base_url('barang/edit/' . $value->id_barang) ?>" class="btn btn-primary btn-sm m-2">
                                     <i class="fa fa-edit"></i>
                                 </a>
+                                <a href="<?= base_url('barang/detail/' . $value->id_barang) ?>" class="btn btn-success btn-sm">
+                                    <i class="fa fa-search-plus"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php } ?>

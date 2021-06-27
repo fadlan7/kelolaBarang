@@ -70,6 +70,7 @@ class Barang extends CI_Controller
         $this->load->view('v_barang_edit', $data);
         $this->load->view('templates/footer');
     }
+
     public function update()
     {
         $data = array(
@@ -81,5 +82,18 @@ class Barang extends CI_Controller
         $this->m_barang->update_data($where, $data, 'tb_barang');
         $this->session->set_flashdata('messages', 'Barang sukses di update!!');
         redirect('barang/index');
+    }
+
+    public function detail($id_barang)
+    {
+        $this->load->model('m_barang');
+
+        $detail = $this->m_barang->detail_data($id_barang);
+        $data['detail'] = $detail;
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('v_barang_detail', $data);
+        $this->load->view('templates/footer');
     }
 }

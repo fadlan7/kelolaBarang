@@ -34,9 +34,15 @@ class M_barang extends CI_Model
     {
         return $this->db->get_where($table, $where);
     }
+
     public function update_data($where, $data, $table)
     {
         $this->db->where($where);
         $this->db->update($table, $data);
+    }
+
+    public function detail_data($id_barang = null){
+        $query = $this->db->get_where('tb_barang', array('id_barang => $id_barang'))->row();
+        return $query;
     }
 }
