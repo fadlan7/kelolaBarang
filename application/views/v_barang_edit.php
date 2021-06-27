@@ -15,7 +15,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Harga Barang</label>
-                                    <input name="harga" class="form-control" placeholder="Harga Barang" value="<?= $value->harga ?>" required>
+                                    <input type="number" name="harga" class="form-control" placeholder="Harga Barang" value="<?= $value->harga ?>" required>
                                 </div>
                             </div>
 
@@ -29,21 +29,6 @@
                                 <textarea class="form-control" name="deskripsi_barang" rows="10" placeholder="Deskripsi Barang" required><?= $value->deskripsi_barang ?></textarea>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <!-- <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Gambar Barang</label>
-                                <input type="file" name="gambar_barang" id="image_preview" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <img src="<?= base_url('assets/img/barang/' . $value->gambar_barang) ?>" id="image_load" width="300px">
-                            </div>
-                        </div> -->
                     </div>
 
                     <div class="form-group">

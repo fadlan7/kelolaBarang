@@ -42,7 +42,8 @@ class M_barang extends CI_Model
     }
 
     public function detail_data($id_barang = null){
-        $query = $this->db->get_where('tb_barang', array('id_barang => $id_barang'))->row();
+        $query = $this->db->get_where('tb_barang', array('id_barang' => $id_barang))->row();
         return $query;
     }
+
 }

@@ -34,7 +34,7 @@
                         <tr>
                             <td class="text-center"><?= $no++ ?></td>
                             <td><?= $value->nama_barang ?></td>
-                            <td>Rp. <?= $value->harga ?></td>
+                            <td>Rp. <?= number_format($value->harga,0) ?></td>
                             <td class="text-center"><img src="<?= base_url('assets/img/barang/' . $value->gambar_barang) ?>" alt="" srcset="" width="150px"></td>
                             <td class="text-center">
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete<?= $value->id_barang ?>">
@@ -101,7 +101,7 @@ foreach ($barang as $key => $value) { ?>
                     <label>Nama Barang</label> <input type="text" name="nama_barang" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Harga Barang</label> <input type="text" name="harga" class="form-control">
+                    <label>Harga Barang</label> <input type="number" name="harga" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Deskripsi Barang</label>

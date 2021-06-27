@@ -19,26 +19,26 @@ class Barang extends CI_Controller
 
     public function tambah_aksi()
     {
-        // $gambar_barang = $FILES['gambar_barang'];
-        // if ($gambar_barang = '') {
-        // } else {
-        //     $config['upload_path']     = './assets/img/barang';
-        //     $config['allowed_types']   = 'jpg|png|gif';
+        $gambar_barang = $FILES['gambar_barang'];
+        if ($gambar_barang = '') {
+        } else {
+            $config['upload_path']     = './assets/img/barang';
+            $config['allowed_types']   = 'jpg|png|gif';
 
-        //     $this->load->library('upload', $config);
-        //     if (!$this->upload->do_upload('gambar_barang')) {
-        //         echo "Upload Gagal";
-        //         die();
-        //     } else {
-        //         $gambar_barang = $this->upload->data('file_name');
-        //     }
-        // }
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('gambar_barang')) {
+                echo "Upload Gagal";
+                die();
+            } else {
+                $gambar_barang = $this->upload->data('file_name');
+            }
+        }
 
         $data = array(
             'nama_barang' => $this->input->post('nama_barang'),
             'harga' => $this->input->post('harga'),
             'deskripsi_barang' => $this->input->post('deskripsi_barang'),
-            // 'gambar_barang'  => $gambar_barang
+            'gambar_barang'  => $gambar_barang
         );
 
         $this->m_barang->input_data($data, 'tb_barang');
