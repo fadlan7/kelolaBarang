@@ -12,27 +12,38 @@ class Barang extends CI_Controller
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('v_barang',$data);
+        $this->load->view('v_barang', $data);
         $this->load->view('templates/footer');
     }
 
-    // Add a new item
-    public function add()
+
+    public function tambah_aksi()
     {
+        // $gambar_barang = $FILES['gambar_barang'];
+        // if ($gambar_barang = '') {
+        // } else {
+        //     $config['upload_path']     = './assets/img/barang';
+        //     $config['allowed_types']   = 'jpg|png|gif';
+
+        //     $this->load->library('upload', $config);
+        //     if (!$this->upload->do_upload('gambar_barang')) {
+        //         echo "Upload Gagal";
+        //         die();
+        //     } else {
+        //         $gambar_barang = $this->upload->data('file_name');
+        //     }
+        // }
+
         $data = array(
             'nama_barang' => $this->input->post('nama_barang'),
             'harga' => $this->input->post('harga'),
-            'deskripsi' => $this->input->post('deskripsi_barang'),
-            'gambar' => $this->input->post('gambar_barang'),
+            'deskripsi_barang' => $this->input->post('deskripsi_barang'),
+            // 'gambar_barang'  => $gambar_barang
         );
 
-        $this->m_barang->add($data, 'tb_barang');
+        $this->m_barang->input_data($data, 'tb_barang');
+        $this->session->set_flashdata('messages', 'Barang sukses ditambahkan!!');
         redirect('barang/index');
-    }
-
-    //Update one item
-    public function update($id = NULL)
-    {
     }
 
     //Delete one item
@@ -46,7 +57,29 @@ class Barang extends CI_Controller
 
         $data = array('id_barang' => $id_barang);
         $this->m_barang->delete($data);
-        $this->session->set_flashdata('messages', 'Barang has been deleted successfully !!');
+        $this->session->set_flashdata('messages', 'Barang sukses dihapus!!');
         redirect('barang');
+    }
+
+    public function edit($id_barang)
+    {
+        $where = array('id_barang' => $id_barang);
+        $data['barang'] = $this->m_barang->edit_data($where, ' tb_barang')->result();
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('v_barang_edit', $data);
+        $this->load->view('templates/footer');
+    }
+    public function update()
+    {
+        $data = array(
+            'nama_barang' => $this->input->post('nama_barang'),
+            'harga' => $this->input->post('harga'),
+            'deskripsi_barang' => $this->input->post('deskripsi_barang'),
+        );
+        $where = array('id_barang' => $this->input->post('id_barang'));
+        $this->m_barang->update_data($where, $data, 'tb_barang');
+        $this->session->set_flashdata('messages', 'Barang sukses di update!!');
+        redirect('barang/index');
     }
 }

@@ -11,7 +11,6 @@ class M_barang extends CI_Model
         return $this->db->get('tb_barang');
     }
 
-    
     public function get_data($id_barang)
     {
         $this->db->select('*');
@@ -20,15 +19,24 @@ class M_barang extends CI_Model
         return $this->db->get()->row();
     }
 
-
-    public function add($data)
+    public function input_data($data)
     {
         $this->db->insert('tb_barang', $data);
     }
-    
-    public function delete($data){
+
+    public function delete($data)
+    {
         $this->db->where('id_barang', $data['id_barang']);
         $this->db->delete('tb_barang', $data);
     }
 
+    public function edit_data($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+    public function update_data($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 }
