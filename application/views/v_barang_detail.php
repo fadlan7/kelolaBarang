@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="<?= base_url('assets/img/barang/' . $detail->gambar_barang) ?>" width="150px">
+                        <img src="<?= base_url('assets/img/barang/' . $detail->gambar_barang) ?>" width="300px">
                     </td>
                 </tr>
             </table> <a href="<?php echo base_url('barang/index'); ?>" class=" btn btn-primary">Kembali</a>
